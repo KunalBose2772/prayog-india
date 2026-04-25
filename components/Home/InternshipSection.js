@@ -17,11 +17,11 @@ export default function InternshipSection() {
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="bg-slate-900 rounded-[3rem] p-8 md:p-16 flex flex-col lg:flex-row items-center gap-12">
           <div className="lg:w-1/2">
-            <h4 className="text-primary font-bold uppercase tracking-widest text-xs mb-4">Join Our Team</h4>
-            <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-6">
-              Internship Program <span className="text-primary">2024</span>
+            <h4 className="text-primary font-bold uppercase tracking-widest text-[10px] md:text-xs mb-4">Join Our Team</h4>
+            <h2 className="text-2xl md:text-5xl font-heading font-black text-white mb-6 leading-tight">
+              Internship Program <span className="text-primary">2026</span>
             </h2>
-            <p className="text-blue-100/60 text-lg mb-10 leading-relaxed">
+            <p className="text-blue-100/60 text-sm md:text-lg mb-10 leading-relaxed font-medium">
               We offer 5+ specialized internship tracks for students to gain 
               real-world experience in AI, Robotics, and IoT.
             </p>
@@ -32,13 +32,13 @@ export default function InternshipSection() {
                     {f.icon}
                   </div>
                   <div>
-                    <h4 className="font-bold text-white text-sm mb-1">{f.title}</h4>
-                    <p className="text-blue-100/40 text-xs">{f.desc}</p>
+                    <h4 className="font-bold text-white text-xs md:text-sm mb-1">{f.title}</h4>
+                    <p className="text-blue-100/40 text-[10px] md:text-xs">{f.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
-            <Link href="/internships" className="inline-block bg-primary text-navy px-10 py-4 rounded-xl font-heading font-bold hover:bg-yellow-400 transition-all">
+            <Link href="/internships" className="inline-block bg-primary text-navy px-6 py-3 md:px-10 md:py-4 rounded-xl font-heading font-bold text-sm md:text-base hover:bg-yellow-400 transition-all">
               Apply for Internship
             </Link>
           </div>

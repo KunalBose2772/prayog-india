@@ -41,11 +41,11 @@ export default function FAQ() {
               <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6">
                 <HelpCircle size={24} />
               </div>
-              <h4 className="text-navy font-bold uppercase tracking-widest text-xs mb-3">FAQ Section</h4>
-              <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-900 mb-6 leading-tight">
+              <h4 className="text-navy font-bold uppercase tracking-widest text-[10px] md:text-xs mb-3">FAQ Section</h4>
+              <h2 className="text-2xl md:text-5xl font-heading font-bold text-slate-900 mb-6 leading-tight">
                 Frequently Asked <span className="text-navy">Questions</span>
               </h2>
-              <p className="text-slate-500 mb-8 leading-relaxed">
+              <p className="text-slate-500 mb-8 leading-relaxed text-sm md:text-base">
                 Everything you need to know about our workshops, certifications, and learning methodology.
               </p>
               <div className="p-6 rounded-3xl bg-slate-50 border border-slate-100">
@@ -71,7 +71,7 @@ export default function FAQ() {
                   onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
                   className="w-full px-8 py-6 flex items-center justify-between text-left"
                 >
-                  <span className={`text-lg font-heading font-bold transition-colors ${
+                  <span className={`text-sm md:text-lg font-heading font-bold transition-colors ${
                     openIndex === i ? "text-navy" : "text-slate-700 group-hover:text-navy"
                   }`}>
                     {faq.question}
@@ -94,9 +94,10 @@ export default function FAQ() {
                     >
                       <div className="px-8 pb-8 pt-2">
                         <div className="w-full h-px bg-slate-100 mb-6" />
-                        <p className="text-slate-500 leading-relaxed">
+                        <p className="text-slate-500 leading-relaxed text-xs md:text-base">
                           {faq.answer}
                         </p>
+
                       </div>
                     </motion.div>
                   )}

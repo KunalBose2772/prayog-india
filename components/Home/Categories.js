@@ -59,12 +59,12 @@ export default function Categories() {
       
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h4 className="text-navy font-bold uppercase tracking-widest text-[10px] mb-3">Our Specializations</h4>
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900">Explore Course Categories</h2>
+          <h4 className="text-navy font-bold uppercase tracking-widest text-[10px] md:text-xs mb-3">Our Specializations</h4>
+          <h2 className="text-2xl md:text-4xl font-heading font-black text-slate-900">Explore Course Categories</h2>
           <div className="w-12 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
           {categories.map((cat, i) => (
             <motion.div
               key={i}
@@ -72,39 +72,40 @@ export default function Categories() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -12 }}
-              className="group p-10 rounded-[2.5rem] bg-white border border-slate-100 hover:border-primary/50 hover:shadow-[0_40px_80px_-15px_rgba(255,193,7,0.15)] transition-all duration-700 relative overflow-hidden"
+              className="group p-5 md:p-10 rounded-[1.5rem] md:rounded-[2.5rem] bg-white border border-slate-100 hover:border-primary/50 hover:shadow-[0_40px_80px_-15px_rgba(255,193,7,0.15)] transition-all duration-700 relative overflow-hidden"
             >
               {/* Premium Accent Corner */}
               <div className="absolute -top-12 -right-12 w-32 h-32 bg-primary/5 rounded-full group-hover:bg-primary/20 transition-all duration-700 blur-2xl" />
               
               <div className="relative z-10">
-                <div className="w-20 h-20 rounded-[1.5rem] bg-slate-50 flex items-center justify-center text-navy mb-8 group-hover:bg-primary group-hover:text-secondary group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-sm border border-slate-100">
-                  {cat.icon}
+                <div className="w-12 h-12 md:w-20 md:h-20 rounded-xl md:rounded-[1.5rem] bg-slate-50 flex items-center justify-center text-navy mb-4 md:mb-8 group-hover:bg-primary group-hover:text-secondary group-hover:scale-110 transition-all duration-500 shadow-sm border border-slate-100">
+                  <div className="scale-75 md:scale-100">{cat.icon}</div>
                 </div>
                 
-                <h3 className="text-2xl font-heading font-black text-slate-900 mb-4 group-hover:text-secondary transition-colors leading-tight">
+                <h3 className="text-sm md:text-2xl font-heading font-black text-slate-900 mb-2 md:mb-4 group-hover:text-secondary transition-colors leading-tight">
                   {cat.title}
                 </h3>
                 
-                <p className="text-slate-500 text-sm leading-relaxed mb-10 font-medium">
+                <p className="text-[10px] md:text-sm text-slate-500 leading-relaxed mb-6 md:mb-10 font-medium line-clamp-2 md:line-clamp-none">
                   {cat.desc}
                 </p>
                 
                 <div className="flex items-center justify-between">
-                  <button className="bg-secondary text-white px-6 py-2 rounded-full font-bold text-[10px] uppercase tracking-widest flex items-center group/btn hover:bg-black transition-all">
-                    Learn More 
-                    <ArrowRight size={14} className="ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                  <button className="bg-secondary text-white px-3 md:px-6 py-1.5 md:py-2 rounded-full font-bold text-[8px] md:text-[10px] uppercase tracking-widest flex items-center group/btn hover:bg-black transition-all">
+                    <span className="hidden xs:inline">Learn More</span>
+                    <span className="xs:hidden">More</span>
+                    <ArrowRight size={10} className="ml-1.5 md:ml-2 group-hover/btn:translate-x-1 transition-transform" />
                   </button>
                   
-                  <div className="text-lg font-black text-slate-100 uppercase tracking-tighter group-hover:text-primary/20 transition-colors">
+                  <div className="text-xs md:text-lg font-black text-slate-100 uppercase tracking-tighter group-hover:text-primary/20 transition-colors">
                     0{i + 1}
                   </div>
                 </div>
               </div>
             </motion.div>
-
           ))}
         </div>
+
       </div>
     </section>
   );

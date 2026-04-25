@@ -8,12 +8,31 @@ export default function StickyAction() {
   const [isVisible, setIsVisible] = useState(false);
   const [timeLeft, setTimeLeft] = useState({
     days: "00",
-    hours: "12",
-    minutes: "45",
-    seconds: "30"
+    hours: "00",
+    minutes: "00",
+    seconds: "00"
   });
 
   useEffect(() => {
+    const targetDate = new Date("June 15, 2026 00:00:00").getTime();
+
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        clearInterval(interval);
+        return;
+      }
+
+      setTimeLeft({
+        days: Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0'),
+        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0'),
+        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0'),
+        seconds: Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0')
+      });
+    }, 1000);
+
     const handleScroll = () => {
       if (window.scrollY > 400) {
         setIsVisible(true);
@@ -23,7 +42,10 @@ export default function StickyAction() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (

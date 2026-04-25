@@ -17,23 +17,23 @@ export default function CTA() {
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/10 rounded-full -ml-32 -mb-32 blur-3xl"></div>
 
           <div className="relative z-10 max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-6">
+            <h2 className="text-2xl md:text-5xl font-heading font-black text-white mb-6 leading-tight">
               Ready to Start Your <span className="text-primary">Robotics Journey?</span>
             </h2>
-            <p className="text-blue-100/70 text-lg mb-10 leading-relaxed">
+            <p className="text-blue-100/70 text-sm md:text-lg mb-10 leading-relaxed font-medium">
               Join thousands of students who are already building the future. 
               Get started today with our free consultation.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link 
                 href="/register" 
-                className="bg-primary text-navy px-10 py-4 rounded-xl font-heading font-bold hover:bg-yellow-400 transition-all w-full sm:w-auto"
+                className="bg-primary text-navy px-6 py-3 md:px-10 md:py-4 rounded-xl font-heading font-bold text-sm md:text-base hover:bg-yellow-400 transition-all w-full sm:w-auto"
               >
                 Enroll Now
               </Link>
               <Link 
                 href="/contact" 
-                className="bg-white/10 text-white border border-white/20 px-10 py-4 rounded-xl font-heading font-bold hover:bg-white/20 transition-all w-full sm:w-auto"
+                className="bg-white/10 text-white border border-white/20 px-6 py-3 md:px-10 md:py-4 rounded-xl font-heading font-bold text-sm md:text-base hover:bg-white/20 transition-all w-full sm:w-auto"
               >
                 Contact Us
               </Link>

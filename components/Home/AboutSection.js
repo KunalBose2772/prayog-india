@@ -34,17 +34,17 @@ export default function AboutSection() {
             transition={{ duration: 0.8 }}
             className="w-full lg:w-1/2"
           >
-            <h4 className="text-navy font-bold uppercase tracking-widest text-xs mb-3">About Prayog India</h4>
-            <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-900 mb-6 leading-tight">
+            <h4 className="text-navy font-bold uppercase tracking-widest text-[10px] md:text-xs mb-3">About Prayog India</h4>
+            <h2 className="text-2xl md:text-5xl font-heading font-black text-slate-900 mb-6 leading-tight">
               Bridging the Gap Between <span className="text-navy">Theory & Practice</span>
             </h2>
-            <p className="text-slate-600 mb-8 leading-relaxed text-lg">
+            <p className="text-slate-600 mb-8 leading-relaxed text-sm md:text-lg font-medium">
               At Prayog India, we believe that true learning happens through experimentation. 
               Our state-of-the-art laboratories and industry-expert mentors provide a fertile 
               ground for students to explore, build, and innovate in the world of robotics.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mb-10">
               {[
                 "Certified Expert Mentors",
                 "Hands-on Project Training",
@@ -53,12 +53,13 @@ export default function AboutSection() {
                 "Internship Opportunities",
                 "Active Placement Support"
               ].map((item, i) => (
-                <div key={i} className="flex items-center space-x-3 text-slate-700 font-medium">
-                  <CheckCircle2 className="text-navy w-5 h-5 shrink-0" />
+                <div key={i} className="flex items-center space-x-2 md:space-x-3 text-slate-700 font-bold text-[13px] md:text-base">
+                  <CheckCircle2 className="text-navy w-4 h-4 md:w-5 md:h-5 shrink-0" />
                   <span>{item}</span>
                 </div>
               ))}
             </div>
+
 
             <button className="bg-navy text-white px-8 py-4 rounded-xl font-heading font-bold hover:bg-navy/90 hover:shadow-xl transition-all duration-300">
               Learn More About Us
