@@ -1,9 +1,44 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, Phone, Mail, MapPin } from "lucide-react";
 
 export default function EnquiryForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    course: "Industrial Robotics",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
+      const data = await res.json();
+      if (data.success) {
+        alert("Enquiry Submitted Successfully!");
+        setFormData({ name: "", email: "", phone: "", course: "Industrial Robotics", message: "" });
+      }
+    } catch (error) {
+      alert("Submission failed.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
     <section className="py-10 md:py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -11,26 +46,26 @@ export default function EnquiryForm() {
           {/* Form Side */}
           <div className="flex-grow p-6 md:p-10 lg:p-12">
             <h2 className="text-2xl md:text-4xl font-heading font-black text-slate-900 mb-6">Send an Enquiry</h2>
-            <form className="space-y-4 md:space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div className="space-y-1.5">
                   <label className="text-[10px] font-bold text-slate-700 uppercase tracking-widest ml-1">Full Name</label>
-                  <input type="text" placeholder="Rahul Sharma" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 md:px-6 md:py-4 outline-none focus:border-navy focus:bg-white transition-all text-sm" />
+                  <input name="name" value={formData.name} onChange={handleChange} type="text" required placeholder="Rahul Sharma" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 md:px-6 md:py-4 outline-none focus:border-navy focus:bg-white transition-all text-sm" />
                 </div>
                 <div className="space-y-1.5">
                   <label className="text-[10px] font-bold text-slate-700 uppercase tracking-widest ml-1">Email Address</label>
-                  <input type="email" placeholder="rahul@example.com" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 md:px-6 md:py-4 outline-none focus:border-navy focus:bg-white transition-all text-sm" />
+                  <input name="email" value={formData.email} onChange={handleChange} type="email" required placeholder="rahul@example.com" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 md:px-6 md:py-4 outline-none focus:border-navy focus:bg-white transition-all text-sm" />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div className="space-y-1.5">
                   <label className="text-[10px] font-bold text-slate-700 uppercase tracking-widest ml-1">Phone Number</label>
-                  <input type="tel" placeholder="+91 98765 43210" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 md:px-6 md:py-4 outline-none focus:border-navy focus:bg-white transition-all text-sm" />
+                  <input name="phone" value={formData.phone} onChange={handleChange} type="tel" required placeholder="+91 98765 43210" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 md:px-6 md:py-4 outline-none focus:border-navy focus:bg-white transition-all text-sm" />
                 </div>
                 <div className="space-y-1.5">
                   <label className="text-[10px] font-bold text-slate-700 uppercase tracking-widest ml-1">Interested Course</label>
-                  <select className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 md:px-6 md:py-4 outline-none focus:border-navy focus:bg-white transition-all appearance-none text-sm">
+                  <select name="course" value={formData.course} onChange={handleChange} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 md:px-6 md:py-4 outline-none focus:border-navy focus:bg-white transition-all appearance-none text-sm">
                     <option>Industrial Robotics</option>
                     <option>AI & Machine Learning</option>
                     <option>STEM Foundation</option>
@@ -41,11 +76,11 @@ export default function EnquiryForm() {
 
               <div className="space-y-1.5">
                 <label className="text-[10px] font-bold text-slate-700 uppercase tracking-widest ml-1">Your Message</label>
-                <textarea rows="3" placeholder="How can we help you?" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 md:px-6 md:py-4 outline-none focus:border-navy focus:bg-white transition-all resize-none text-sm"></textarea>
+                <textarea name="message" value={formData.message} onChange={handleChange} rows="3" required placeholder="How can we help you?" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 md:px-6 md:py-4 outline-none focus:border-navy focus:bg-white transition-all resize-none text-sm"></textarea>
               </div>
 
-              <button className="w-full sm:w-auto bg-navy text-white px-8 py-3.5 md:px-10 md:py-4 rounded-xl font-heading font-bold hover:bg-navy/90 hover:shadow-xl transition-all flex items-center justify-center space-x-3 group text-sm md:text-base">
-                <span>Submit Enquiry</span>
+              <button type="submit" disabled={isSubmitting} className="w-full sm:w-auto bg-navy text-white px-8 py-3.5 md:px-10 md:py-4 rounded-xl font-heading font-bold hover:bg-navy/90 hover:shadow-xl transition-all flex items-center justify-center space-x-3 group text-sm md:text-base disabled:opacity-50">
+                <span>{isSubmitting ? "Submitting..." : "Submit Enquiry"}</span>
                 <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </button>
             </form>

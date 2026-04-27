@@ -9,7 +9,10 @@ export default function StudentLife() {
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Video Side */}
-          <div className="relative group cursor-pointer">
+          <div 
+            onClick={() => alert("Launching Student Testimonial Video...")}
+            className="relative group cursor-pointer"
+          >
             <div className="rounded-[2.5rem] overflow-hidden shadow-2xl relative">
               <img src="/assets/hero-indian-2.png" alt="Video Testimonial" className="w-full h-auto aspect-video object-cover" />
               <div className="absolute inset-0 bg-navy/20 flex items-center justify-center">

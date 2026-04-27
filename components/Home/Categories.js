@@ -2,6 +2,7 @@
 
 import { Cpu, Rocket, Lightbulb, ShieldCheck, Microscope, Globe, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const categories = [
   {
@@ -91,11 +92,11 @@ export default function Categories() {
                 </p>
                 
                 <div className="flex items-center justify-between">
-                  <button className="bg-secondary text-white px-3 md:px-6 py-1.5 md:py-2 rounded-full font-bold text-[8px] md:text-[10px] uppercase tracking-widest flex items-center group/btn hover:bg-black transition-all">
+                  <Link href="/courses" className="bg-secondary text-white px-3 md:px-6 py-1.5 md:py-2 rounded-full font-bold text-[8px] md:text-[10px] uppercase tracking-widest flex items-center group/btn hover:bg-black transition-all">
                     <span className="hidden xs:inline">Learn More</span>
                     <span className="xs:hidden">More</span>
                     <ArrowRight size={10} className="ml-1.5 md:ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                  </button>
+                  </Link>
                   
                   <div className="text-xs md:text-lg font-black text-slate-100 uppercase tracking-tighter group-hover:text-primary/20 transition-colors">
                     0{i + 1}

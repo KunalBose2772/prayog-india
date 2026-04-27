@@ -100,7 +100,10 @@ export default function HeroSlider() {
                   <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                 </Link>
                 
-                <button className="flex items-center space-x-4 group text-white hover:text-primary transition-colors pl-2 sm:pl-0">
+                <button 
+                  onClick={() => alert("Launching Institutional Video...")}
+                  className="flex items-center space-x-4 group text-white hover:text-primary transition-colors pl-2 sm:pl-0"
+                >
                   <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:border-primary transition-all">
                     <Play size={16} fill="currentColor" />
                   </div>

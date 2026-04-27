@@ -1,3 +1,6 @@
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import StickyAction from "@/components/StickyAction";
 import HeroSlider from "@/components/HeroSlider";
 import Rankings from "@/components/Home/Rankings";
 import Categories from "@/components/Home/Categories";
@@ -14,12 +17,15 @@ import EnquiryForm from "@/components/Home/EnquiryForm";
 import Testimonials from "@/components/Home/Testimonials";
 import FAQ from "@/components/Home/FAQ";
 import CTA from "@/components/Home/CTA";
+import ShortTermActivities from "@/components/Home/ShortTermActivities";
 
 export default function Home() {
   return (
-    <main className="flex-1 flex flex-col bg-white">
+    <main className="min-h-screen">
+      <Header />
       <HeroSlider />
       <Rankings />
+      <ShortTermActivities />
       <Categories />
       <Stats />
       <Partners />
@@ -34,6 +40,8 @@ export default function Home() {
       <FAQ />
       <EnquiryForm />
       <CTA />
+      <Footer />
+      <StickyAction />
     </main>
   );
 }
